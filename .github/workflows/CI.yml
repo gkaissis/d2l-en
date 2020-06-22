@@ -25,17 +25,14 @@ jobs:
         pip install git+https://github.com/d2l-ai/d2l-book &&
         pip install docutils==0.15.2
     - name: Check outputs
-      if: github.ref == 'refs/heads/jax'
       run: |
         cd d2l-en &&
         d2lbook build outputcheck
     - name: Eval
-      if: github.ref == 'refs/heads/jax'
       run: |
         cd d2l-en &&
         d2lbook build eval --tab jax
     - name: build library
-      if: github.ref == 'refs/heads/jax'
       run: |
         cd d2l-en &&
         d2lbook build lib
