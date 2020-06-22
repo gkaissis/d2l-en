@@ -26,7 +26,8 @@ jobs:
         git clone https://github.com/d2l-ai/d2l-en.git &&
         cd d2l-en && python setup.py develop &&
         pip install jax jaxlib jupyterlab &&
-        pip install git+https://github.com/d2l-ai/d2l-book
+        pip install git+https://github.com/d2l-ai/d2l-book &&
+        pip install docutils==0.15.2
     - name: Check outputs
       run: |
         d2lbook build outputcheck
