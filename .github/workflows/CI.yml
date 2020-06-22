@@ -5,9 +5,9 @@ name: JAX PR
 
 on:
   push:
-    branches: [ master, jax ]
+    branches: [ jax ]
   pull_request:
-    branches: [ master, jax ]
+    branches: [ jax ]
 
 jobs:
   build:
