@@ -1,0 +1,38 @@
+# This workflow will install Python dependencies, run tests and lint with a single version of Python
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
+
+name: JAX PR
+
+on:
+  push:
+    branches: [ master, jax ]
+  pull_request:
+    branches: [ master, jax ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip &&
+        pip install git+https://github.com/d2l-ai/d2l-en.git &&
+        pip install jax jaxlib jupyterlab &&
+        pip install git+https://github.com/d2l-ai/d2l-book
+    - name: Check outputs
+      run: |
+        d2lbook build outputcheck
+    - name: Eval
+      run: |
+        d2lbook build eval --tab jax
+    - name: build library
+      run: |
+        d2lbook build lib
+  
