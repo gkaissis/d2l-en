@@ -3,7 +3,13 @@
 
 name: JAX PR
 
-on: [push, pull_request]
+on: 
+  push:
+    branches:
+      - jax
+  pull_request:
+    branches:
+      - jax 
 
 jobs:
   build:
